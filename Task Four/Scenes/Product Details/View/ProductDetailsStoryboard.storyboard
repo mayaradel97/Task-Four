@@ -8,16 +8,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Product Details View Controller-->
         <scene sceneID="A4H-Vg-YOM">
             <objects>
-                <viewController id="0J0-Pt-KBt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailsViewController" id="0J0-Pt-KBt" customClass="ProductDetailsViewController" customModule="Task_Four" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iMf-pl-Ol0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mfp-6C-BH4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="627"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0b-yV-nbf">
+                                <rect key="frame" x="16" y="717" width="394" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-Vh-EWq">
+                                <rect key="frame" x="4" y="679" width="406" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="LEX-Zb-tIq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LEX-Zb-tIq" firstAttribute="trailing" secondItem="UzN-Vh-EWq" secondAttribute="trailing" constant="4" id="3ir-Fn-A0f"/>
+                            <constraint firstItem="UzN-Vh-EWq" firstAttribute="top" secondItem="mfp-6C-BH4" secondAttribute="bottom" constant="8" id="Itb-sV-BHv"/>
+                            <constraint firstItem="t0b-yV-nbf" firstAttribute="leading" secondItem="LEX-Zb-tIq" secondAttribute="leading" constant="16" id="LyK-mV-cau"/>
+                            <constraint firstItem="t0b-yV-nbf" firstAttribute="top" secondItem="UzN-Vh-EWq" secondAttribute="bottom" constant="8" id="Uru-R7-tQx"/>
+                            <constraint firstItem="mfp-6C-BH4" firstAttribute="leading" secondItem="LEX-Zb-tIq" secondAttribute="leading" id="V9w-RT-Q5R"/>
+                            <constraint firstItem="LEX-Zb-tIq" firstAttribute="trailing" secondItem="mfp-6C-BH4" secondAttribute="trailing" id="pip-Dl-o7C"/>
+                            <constraint firstItem="UzN-Vh-EWq" firstAttribute="leading" secondItem="LEX-Zb-tIq" secondAttribute="leading" constant="4" id="snG-Jw-Qyo"/>
+                            <constraint firstItem="mfp-6C-BH4" firstAttribute="height" secondItem="iMf-pl-Ol0" secondAttribute="height" multiplier="0.7" id="uJB-hV-ZW4"/>
+                            <constraint firstItem="mfp-6C-BH4" firstAttribute="top" secondItem="LEX-Zb-tIq" secondAttribute="top" id="x6G-x9-8dX"/>
+                            <constraint firstItem="LEX-Zb-tIq" firstAttribute="trailing" secondItem="t0b-yV-nbf" secondAttribute="trailing" constant="4" id="xn0-t4-nT3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="productDescription" destination="t0b-yV-nbf" id="nrv-Rn-XAR"/>
+                        <outlet property="productImage" destination="mfp-6C-BH4" id="ClO-J2-saq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoS-Dt-t2Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
