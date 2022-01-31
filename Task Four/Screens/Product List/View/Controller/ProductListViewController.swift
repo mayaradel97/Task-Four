@@ -7,9 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "ProductsListCell"
-
-class ProductsListCollectionViewController: UIViewController
+class ProductListViewController: UIViewController
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -19,7 +17,6 @@ class ProductsListCollectionViewController: UIViewController
     {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: String(describing: ProductsListCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductsListCollectionViewCell.self))
-        productsListVM = ProductsListViewModel()
         productsListVM.getProductsListFromNetwork()
         self.bindProductsList()
         self.bindFailure()
@@ -56,7 +53,7 @@ class ProductsListCollectionViewController: UIViewController
 
 
 // MARK: UICollectionViewDataSource
-extension ProductsListCollectionViewController :UICollectionViewDataSource
+extension ProductListViewController :UICollectionViewDataSource
 {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -81,7 +78,7 @@ extension ProductsListCollectionViewController :UICollectionViewDataSource
     
 }
 // MARK: UICollectionViewDelegate
-extension ProductsListCollectionViewController:UICollectionViewDelegate
+extension ProductListViewController:UICollectionViewDelegate
 {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
@@ -93,7 +90,7 @@ extension ProductsListCollectionViewController:UICollectionViewDelegate
     
 }
 // MARK: UICollectionViewDelegateFlowLayout
-extension ProductsListCollectionViewController:UICollectionViewDelegateFlowLayout
+extension ProductListViewController:UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
