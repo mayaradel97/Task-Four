@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Network
 class ProductsListViewModel
 {
     var bindProductsListToView: (()->())!
     var bindFailureToView: (()->())!
+    var bindShowLoadingIndicatorToView: (()->())!
+    var bindHideLoadingIndicatorToView: (()->())!
     var products: [Product]
     var networkLayer: NetworkLayer!
     var productListCoordinator: ProductListCoordinator!
@@ -17,12 +20,34 @@ class ProductsListViewModel
     {
         products = []
     }
+    func checkNetworkConnectivity()
+    {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.pathUpdateHandler =
+        { path in
+            if path.status == .satisfied
+            {
+                self.getProductsListFromNetwork()
+                self.bindShowLoadingIndicatorToView()
+                print("There is internet")
+            } else
+            {
+                //self.bindFailureToView()
+                //self.bindHideLoadingIndicatorToView()
+                print("No internet cashe data")
+            }
+        
+        }
+        monitor.start(queue: queue)
+    }
     func configureCell(cell: ProductListCellView,indexPath:IndexPath)
     {
         cell.configure(product: products[indexPath.row])
     }
     func getProductsListFromNetwork()
     {
+        self.bindShowLoadingIndicatorToView()
         let productsURL = URL(string: API.baseURL)!
         networkLayer.getProductsList(of:[Product].self,url: productsURL)
         { [weak self] (products) in
@@ -32,6 +57,7 @@ class ProductsListViewModel
             {
                 //bind failure
                 self.bindFailureToView()
+                self.bindHideLoadingIndicatorToView()
                 return
             }
             for product in productsList
@@ -40,6 +66,7 @@ class ProductsListViewModel
             }
             self.products += productsList
             self.bindProductsListToView()
+            self.bindHideLoadingIndicatorToView()
         }
         
     }

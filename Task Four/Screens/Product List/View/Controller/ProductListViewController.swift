@@ -16,23 +16,55 @@ class ProductListViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        productListViewModel.getProductsListFromNetwork()
-        self.cellResiteration()
         self.bindProductsList()
         self.bindFailure()
-        self.loadingIndicator.startAnimating()
+        self.bindLoadingIndicator()
+        self.bindHideLoadingIndicator()
+        productListViewModel.checkNetworkConnectivity()
+        productListViewModel.getProductsListFromNetwork()
+        self.cellResiteration()
     }
     func cellResiteration()
     {
         collectionView.register(UINib(nibName: String(describing: ProductsListCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductsListCollectionViewCell.self))
     }
+// MARK: binding methods
     func bindFailure()
     {
         productListViewModel.bindFailureToView =
             {
                 [weak self] in
                 guard let self = self else {return}
+                DispatchQueue.main.async
+                {
                 self.showAlert(with: "No Internt Connection")
+                }
+            }
+    }
+    func bindLoadingIndicator()
+    {
+        productListViewModel.bindShowLoadingIndicatorToView =
+            {
+                [weak self] in
+                guard let self = self else {return}
+                DispatchQueue.main.async
+                {
+                    self.loadingIndicator.startAnimating()
+                }
+            }
+        
+    }
+    func bindHideLoadingIndicator()
+    {
+        productListViewModel.bindHideLoadingIndicatorToView =
+            {
+                [weak self] in
+                guard let self = self else {return}
+                DispatchQueue.main.async
+                {
+                    self.loadingIndicator.stopAnimating()
+                }
+            
             }
     }
     func bindProductsList()
@@ -45,7 +77,6 @@ class ProductListViewController: UIViewController
                 DispatchQueue.main.async
                 {
                     self.collectionView.reloadData()
-                    self.loadingIndicator.stopAnimating()
                 }
                 
             }
@@ -75,8 +106,6 @@ extension ProductListViewController :UICollectionViewDataSource
         if indexPath.row == productListViewModel.products.count - 1
         {
             self.productListViewModel.getProductsListFromNetwork()
-            self.loadingIndicator.startAnimating()
-            
         }
     }
     
@@ -100,7 +129,7 @@ extension ProductListViewController:UICollectionViewDelegateFlowLayout
         let padding: CGFloat =  2
         let collectionViewSize = collectionView.frame.size.width - padding
                
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize + 200)
+        return CGSize(width: collectionViewSize/2, height: collectionViewSize + 250)
     }
     
     

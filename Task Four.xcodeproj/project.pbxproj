@@ -175,7 +175,7 @@
 			children = (
 				962AE78F27A49520000C06B8 /* API.swift */,
 				962AE79227A49590000C06B8 /* Product.swift */,
-				962AE79527A49717000C06B8 /* NetworkLayer.swift */,
+				96D1389927A9AB4100A46034 /* Network */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +227,14 @@
 				9684CB9427A8AAF7005C3506 /* ProductDetailsCoordinator.swift */,
 			);
 			path = "Product Details";
+			sourceTree = "<group>";
+		};
+		96D1389927A9AB4100A46034 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				962AE79527A49717000C06B8 /* NetworkLayer.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		96F1F21D27A8496C00CD54BB /* Protocols */ = {
