@@ -8,19 +8,16 @@
 import Foundation
 class ProductsListViewModel
 {
-    var bindProductsListToView:(()->())!
-    var bindFailureToView:(()->())!
+    var bindProductsListToView: (()->())!
+    var bindFailureToView: (()->())!
     var products: [Product]
-    let networkLayer: NetworkLayer
+    var networkLayer: NetworkLayer!
     var productListCoordinator: ProductListCoordinator!
-    
-    //var bindImageDataToView:((Data?)->())!
     init()
     {
         products = []
-        networkLayer = NetworkLayer()
     }
-    func configureCell(cell: ProductsListCellView,indexPath:IndexPath)
+    func configureCell(cell: ProductListCellView,indexPath:IndexPath)
     {
         cell.configure(product: products[indexPath.row])
     }
@@ -39,32 +36,29 @@ class ProductsListViewModel
             }
             for product in productsList
             {
-                product.imageData = self.getImageData(with: product.image.url)
+                product.imageData = self.getImageData(with: product.image.url)!
             }
             self.products += productsList
             self.bindProductsListToView()
         }
         
     }
-    func getImageData(with url:String)->Data?
+    func getImageData(with url: String)-> Data?
     {
         let url = URL(string: url)
         guard let imageURL = url
         else
         {
-       //     self.bindImageDataToView(nil)
             return nil
         }
        guard let imageData = try? Data(contentsOf: imageURL)
         else
        {
-      //  self.bindImageDataToView(nil)
         return nil
        }
         return imageData
-        //self.bindImageDataToView(imageData)
     }
-    func didSelectRow(at indexPath:IndexPath)
+    func didSelectRow(at indexPath: IndexPath)
     {
         productListCoordinator.rowSelected(with:products[indexPath.row])
     }

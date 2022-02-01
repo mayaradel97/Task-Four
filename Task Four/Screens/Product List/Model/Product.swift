@@ -8,16 +8,16 @@
 import Foundation
 class Product:Codable
 {
-    let image:productImage
-    let price:Int
-    let productDescription:String
-    var imageData:Data?
+    let image: productImage
+    let price: Int
+    let productDescription: String
+    var imageData: Data?
     
     
 }
 struct productImage:Codable
 {
-    let width :Int
-    let height:Int
-    let url:String
+    let width: Int
+    let height: Int
+    let url: String
 }

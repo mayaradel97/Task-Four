@@ -15,7 +15,7 @@ extension UIViewController
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-  static  func instantiate<T>(storyBoardName name:String)->T
+  static  func instantiate<T>(storyBoardName name: String)->T
     {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let viewControllerIdentifier = String(describing:T.self)

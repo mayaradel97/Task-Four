@@ -11,20 +11,24 @@ class ProductListViewController: UIViewController
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    var productsListVM :ProductsListViewModel!
+    var productListViewModel :ProductsListViewModel!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: String(describing: ProductsListCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductsListCollectionViewCell.self))
-        productsListVM.getProductsListFromNetwork()
+        productListViewModel.getProductsListFromNetwork()
+        self.cellResiteration()
         self.bindProductsList()
         self.bindFailure()
         self.loadingIndicator.startAnimating()
     }
+    func cellResiteration()
+    {
+        collectionView.register(UINib(nibName: String(describing: ProductsListCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductsListCollectionViewCell.self))
+    }
     func bindFailure()
     {
-        productsListVM.bindFailureToView =
+        productListViewModel.bindFailureToView =
             {
                 [weak self] in
                 guard let self = self else {return}
@@ -33,7 +37,7 @@ class ProductListViewController: UIViewController
     }
     func bindProductsList()
     {
-        productsListVM.bindProductsListToView =
+        productListViewModel.bindProductsListToView =
             {
                 [weak self]  in
                 guard let self = self else {return}
@@ -58,19 +62,19 @@ extension ProductListViewController :UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return productsListVM.products.count
+        return productListViewModel.products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let productsListCell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductsListCollectionViewCell.self), for: indexPath) as! ProductsListCollectionViewCell
-        productsListVM.configureCell(cell: productsListCell, indexPath: indexPath)
+        productListViewModel.configureCell(cell: productsListCell, indexPath: indexPath)
         return productsListCell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
-        if indexPath.row == productsListVM.products.count - 1
+        if indexPath.row == productListViewModel.products.count - 1
         {
-            self.productsListVM.getProductsListFromNetwork()
+            self.productListViewModel.getProductsListFromNetwork()
             self.loadingIndicator.startAnimating()
             
         }
@@ -83,7 +87,7 @@ extension ProductListViewController:UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        productsListVM.didSelectRow(at: indexPath)
+        productListViewModel.didSelectRow(at: indexPath)
     }
     
     

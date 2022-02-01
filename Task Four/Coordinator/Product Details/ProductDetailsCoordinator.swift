@@ -6,18 +6,18 @@
 //
 
 import UIKit
-class ProductDetailsCoordinator:Coordinator
+class ProductDetailsCoordinator: Coordinator
 {
-    private let navigationController :UINavigationController
-    private let product:Product
-    init(navigationController :UINavigationController,product:Product)
+    private let navigationController: UINavigationController
+    private let product: Product
+    init(navigationController: UINavigationController,product:Product)
     {
         self.navigationController = navigationController
         self.product = product
     }
     func start()
     {
-        let productDetailsVC:ProductDetailsViewController = .instantiate(storyBoardName: "ProductDetailsStoryboard")
+        let productDetailsVC: ProductDetailsViewController = .instantiate(storyBoardName: "ProductDetailsStoryboard")
         let productDetailsVM = ProductDetailsViewModel(product: product)
         productDetailsVC.productDetailsViewModel = productDetailsVM
       self.navigationController.pushViewController(productDetailsVC, animated: false)

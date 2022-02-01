@@ -6,7 +6,7 @@
 //
 
 import Foundation
-protocol ProductsListCellView
+protocol ProductListCellView
 {
     func configure(product:Product) 
 }

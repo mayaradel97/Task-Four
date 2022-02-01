@@ -10,15 +10,19 @@ class ProductDetailsViewModel
 {
     private let product: Product
     var bindProductDetailsToView: (()->())!
-    var imageData:Data
+    var imageData: Data?
     {
-        return product.imageData!
+        if let imageData = product.imageData
+        {
+            return imageData
+        }
+        return nil
     }
     var productDescription:String
     {
         return product.productDescription
     }
-    init(product:Product)
+    init(product: Product)
     {
         self.product = product
       

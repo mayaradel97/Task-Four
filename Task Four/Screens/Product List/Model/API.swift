@@ -6,6 +6,7 @@
 //
 
 import Foundation
-struct API {
+struct API
+{
     static var baseURL = "https://mockjson-co.herokuapp.com/bin/61f45cf068e950002ac64c82"
 }

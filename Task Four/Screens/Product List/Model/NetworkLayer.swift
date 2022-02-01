@@ -8,7 +8,7 @@
 import Foundation
 class NetworkLayer
 {
-    func getProductsList<T:Codable>(of type :T.Type,url:URL,completion:@escaping (T?)->())
+    func getProductsList<T:Codable>(of type: T.Type, url: URL,completion: @escaping (T?)->())
     {
 //        let productsURL = URL(string: API.baseURL)
 //        guard let url = productsURL
@@ -29,8 +29,6 @@ class NetworkLayer
             let decoder = JSONDecoder()
             let results = try! decoder.decode(T.self, from: data!)
             completion(results)
-            //print("results")
-            
         }
         task.resume()
         

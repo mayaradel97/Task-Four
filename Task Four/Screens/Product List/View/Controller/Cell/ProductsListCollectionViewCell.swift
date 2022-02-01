@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductsListCollectionViewCell: UICollectionViewCell,ProductsListCellView
+class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
 {
     
     
@@ -29,10 +29,14 @@ class ProductsListCollectionViewCell: UICollectionViewCell,ProductsListCellView
     {
         
         productDescription.sizeToFit()
-        productImage.image = UIImage(data: product.imageData!)
         productImage.frame.size.height = CGFloat(product.image.height)
         productPrice.text = String (product.price) + "$"
         productDescription.text = product.productDescription
+        if let imageData = product.imageData
+        {
+            productImage.image = UIImage(data: imageData)
+        }
+     
         
     }
     

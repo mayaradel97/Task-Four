@@ -11,7 +11,7 @@ class ProductDetailsViewController: UIViewController {
     
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productImage: UIImageView!
-    var productDetailsViewModel:ProductDetailsViewModel!
+    var productDetailsViewModel: ProductDetailsViewModel!
     
     override func viewDidLoad()
     {
@@ -24,8 +24,11 @@ class ProductDetailsViewController: UIViewController {
         productDetailsViewModel.bindProductDetailsToView =
             {[weak self] in 
                 guard let self = self else {return}
-                self.productImage.image = UIImage(data:self.productDetailsViewModel.imageData)
                 self.productDescription.text = self.productDetailsViewModel.productDescription
+                if let imageData = self.productDetailsViewModel.imageData
+                {
+                    self.productImage.image = UIImage(data: imageData)
+                }
             }
     }
 }

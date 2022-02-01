@@ -8,8 +8,8 @@
 import UIKit
 class AppCoordinator: Coordinator
 {
-    private let window:UIWindow
-    init(window:UIWindow)
+    private let window: UIWindow
+    init(window: UIWindow)
     {
         self.window = window
     }
