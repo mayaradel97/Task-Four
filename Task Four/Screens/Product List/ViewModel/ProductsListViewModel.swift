@@ -12,6 +12,8 @@ class ProductsListViewModel
     var bindFailureToView:(()->())!
     var products: [Product]
     let networkLayer: NetworkLayer
+    var productListCoordinator: ProductListCoordinator!
+    
     //var bindImageDataToView:((Data?)->())!
     init()
     {
@@ -62,5 +64,8 @@ class ProductsListViewModel
         return imageData
         //self.bindImageDataToView(imageData)
     }
-    
+    func didSelectRow(at indexPath:IndexPath)
+    {
+        productListCoordinator.rowSelected(with:products[indexPath.row])
+    }
 }

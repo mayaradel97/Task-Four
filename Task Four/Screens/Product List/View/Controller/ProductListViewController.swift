@@ -83,8 +83,7 @@ extension ProductListViewController:UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-
-        
+        productsListVM.didSelectRow(at: indexPath)
     }
     
     

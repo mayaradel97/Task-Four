@@ -8,7 +8,6 @@
 import UIKit
 class ProductListCoordinator:Coordinator
 {
-   //private(set) var childCoordinator: [Coordinator] = []
     private let navigationController:UINavigationController
     init(navigationController:UINavigationController)
     {
@@ -16,12 +15,19 @@ class ProductListCoordinator:Coordinator
     }
     func start()
     {
-     let productListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ProductListViewController") as! ProductListViewController
+        let productListVC:ProductListViewController = .instantiate(storyBoardName: "Main")
+        
         navigationController.setViewControllers([productListVC], animated: false)
         let productListVM = ProductsListViewModel()
         productListVC.productsListVM = productListVM
+        productListVM.productListCoordinator = self
         
     }
-    
+    func rowSelected(with product: Product)
+    {
+        let productDetailsCoordinator = ProductDetailsCoordinator(navigationController: navigationController, product: product)
+        productDetailsCoordinator.start()
+        
+    }
     
 }
