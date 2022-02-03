@@ -25,10 +25,9 @@ class ProductDetailsViewController: UIViewController {
             {[weak self] in 
                 guard let self = self else {return}
                 self.productDescription.text = self.productDetailsViewModel.productDescription
-                if let imageData = self.productDetailsViewModel.imageData
-                {
+               let imageData = self.productDetailsViewModel.imageData
                     self.productImage.image = UIImage(data: imageData)
-                }
+               
             }
     }
 }

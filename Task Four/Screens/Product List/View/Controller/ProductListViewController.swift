@@ -21,7 +21,6 @@ class ProductListViewController: UIViewController
         self.bindLoadingIndicator()
         self.bindHideLoadingIndicator()
         productListViewModel.checkNetworkConnectivity()
-        productListViewModel.getProductsListFromNetwork()
         self.cellResiteration()
     }
     func cellResiteration()
@@ -96,7 +95,8 @@ extension ProductListViewController :UICollectionViewDataSource
         return productListViewModel.products.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         let productsListCell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductsListCollectionViewCell.self), for: indexPath) as! ProductsListCollectionViewCell
         productListViewModel.configureCell(cell: productsListCell, indexPath: indexPath)
         return productsListCell
@@ -105,7 +105,7 @@ extension ProductListViewController :UICollectionViewDataSource
     {
         if indexPath.row == productListViewModel.products.count - 1
         {
-            self.productListViewModel.getProductsListFromNetwork()
+            self.productListViewModel.checkNetworkConnectivity()
         }
     }
     

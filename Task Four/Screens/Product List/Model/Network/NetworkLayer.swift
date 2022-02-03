@@ -8,7 +8,7 @@
 import Foundation
 class NetworkLayer
 {
-    func getProductsList<T:Codable>(of type: T.Type, url: URL,completion: @escaping (T?)->())
+    func getResponse<T:Codable>(of type: T.Type, url: URL,completion: @escaping (T?)->())
     {
         let urlSession = URLSession(configuration: .default)
         let task = urlSession.dataTask(with: url)

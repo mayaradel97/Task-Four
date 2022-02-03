@@ -8,5 +8,5 @@
 import Foundation
 protocol ProductListCellView
 {
-    func configure(product:Product) 
+    func configure(product:ProductViewModel) 
 }

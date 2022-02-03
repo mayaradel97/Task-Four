@@ -13,9 +13,10 @@ class ProductsListViewModel
     var bindFailureToView: (()->())!
     var bindShowLoadingIndicatorToView: (()->())!
     var bindHideLoadingIndicatorToView: (()->())!
-    var products: [Product]
+    var products: [ProductViewModel]
     var networkLayer: NetworkLayer!
     var productListCoordinator: ProductListCoordinator!
+    var coreDataHandler: CoreDataHandler!
     init()
     {
         products = []
@@ -28,31 +29,39 @@ class ProductsListViewModel
         { path in
             if path.status == .satisfied
             {
-                self.getProductsListFromNetwork()
+                self.getProductListFromNetwork()
                 self.bindShowLoadingIndicatorToView()
                 print("There is internet")
-            } else
+            }
+            else
             {
-                //self.bindFailureToView()
-                //self.bindHideLoadingIndicatorToView()
+                self.bindShowLoadingIndicatorToView()
+                self.getProductListFromCoreData()
                 print("No internet cashe data")
             }
         
         }
         monitor.start(queue: queue)
     }
-    func configureCell(cell: ProductListCellView,indexPath:IndexPath)
+    func getProductListFromCoreData()
     {
-        cell.configure(product: products[indexPath.row])
+        coreDataHandler.getProductsFromCoreData
+        { products in
+            self.products = products
+            print("cordata \(products.count)")
+            print("cordata \(products[0].image.height)")
+            self.bindProductsListToView()
+            self.bindHideLoadingIndicatorToView()
+        }
     }
-    func getProductsListFromNetwork()
+    func getProductListFromNetwork()
     {
         self.bindShowLoadingIndicatorToView()
         let productsURL = URL(string: API.baseURL)!
-        networkLayer.getProductsList(of:[Product].self,url: productsURL)
+        networkLayer.getResponse(of:[Product].self,url: productsURL)
         { [weak self] (products) in
             guard let self = self else {return}
-            guard let productsList = products
+            guard let productList = products
             else
             {
                 //bind failure
@@ -60,11 +69,16 @@ class ProductsListViewModel
                 self.bindHideLoadingIndicatorToView()
                 return
             }
-            for product in productsList
+            var productVM :[ProductViewModel]=[]
+            for product in productList
             {
                 product.imageData = self.getImageData(with: product.image.url)!
+                let image = ProductImageViewModel(width: product.image.width, height: product.image.height, url: product.image.url)
+                let product = ProductViewModel(price: product.price, productDescription: product.productDescription, imageData: product.imageData!,image: image)
+                productVM.append(product)
             }
-            self.products += productsList
+            self.products += productVM
+            self.coreDataHandler.addProductsToCoreData(with: self.products)
             self.bindProductsListToView()
             self.bindHideLoadingIndicatorToView()
         }
@@ -84,6 +98,10 @@ class ProductsListViewModel
         return nil
        }
         return imageData
+    }
+    func configureCell(cell: ProductListCellView,indexPath:IndexPath)
+    {
+        cell.configure(product: products[indexPath.row])
     }
     func didSelectRow(at indexPath: IndexPath)
     {

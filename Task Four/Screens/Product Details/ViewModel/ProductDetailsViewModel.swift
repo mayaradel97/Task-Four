@@ -8,21 +8,17 @@
 import Foundation
 class ProductDetailsViewModel
 {
-    private let product: Product
+    private let product: ProductViewModel
     var bindProductDetailsToView: (()->())!
-    var imageData: Data?
+    var imageData: Data
     {
-        if let imageData = product.imageData
-        {
-            return imageData
-        }
-        return nil
+       return product.imageData
     }
     var productDescription:String
     {
         return product.productDescription
     }
-    init(product: Product)
+    init(product: ProductViewModel)
     {
         self.product = product
       

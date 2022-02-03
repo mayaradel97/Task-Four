@@ -18,6 +18,8 @@
 		962AE79327A49590000C06B8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AE79227A49590000C06B8 /* Product.swift */; };
 		962AE79627A49717000C06B8 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AE79527A49717000C06B8 /* NetworkLayer.swift */; };
 		962AE79C27A49BD3000C06B8 /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AE79B27A49BD3000C06B8 /* ProductsListViewModel.swift */; };
+		967661CD27AAE976006F836F /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 967661CB27AAE976006F836F /* CoreDataModel.xcdatamodeld */; };
+		967661D027AAEB23006F836F /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967661CF27AAEB23006F836F /* CoreDataHandler.swift */; };
 		9684CB9527A8AAF7005C3506 /* ProductDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684CB9427A8AAF7005C3506 /* ProductDetailsCoordinator.swift */; };
 		9684CB9B27A8AF58005C3506 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9684CB9A27A8AF58005C3506 /* ProductDetailsViewModel.swift */; };
 		96A33F5E27A99E2300E9DE80 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A33F5D27A99E2300E9DE80 /* Coordinator.swift */; };
@@ -44,6 +46,8 @@
 		962AE79227A49590000C06B8 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		962AE79527A49717000C06B8 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		962AE79B27A49BD3000C06B8 /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
+		967661CC27AAE976006F836F /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		967661CF27AAEB23006F836F /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		9684CB9427A8AAF7005C3506 /* ProductDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCoordinator.swift; sourceTree = "<group>"; };
 		9684CB9A27A8AF58005C3506 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		96A33F5D27A99E2300E9DE80 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				962AE78F27A49520000C06B8 /* API.swift */,
 				962AE79227A49590000C06B8 /* Product.swift */,
 				96D1389927A9AB4100A46034 /* Network */,
+				967661C627AAE8ED006F836F /* DataModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +200,15 @@
 				96FECCC827A5DC95000C7DAB /* ProductsListCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		967661C627AAE8ED006F836F /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				967661CB27AAE976006F836F /* CoreDataModel.xcdatamodeld */,
+				967661CF27AAEB23006F836F /* CoreDataHandler.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		9684CB9927A8AF27005C3506 /* ViewModel */ = {
@@ -353,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				962AE75D27A47A43000C06B8 /* AppDelegate.swift in Sources */,
+				967661D027AAEB23006F836F /* CoreDataHandler.swift in Sources */,
 				962AE79627A49717000C06B8 /* NetworkLayer.swift in Sources */,
 				9619973727A8A04200EC7785 /* ProductListCoordinator.swift in Sources */,
 				9619973427A89F3C00EC7785 /* ProductListViewController.swift in Sources */,
@@ -360,6 +375,7 @@
 				96FFCC8D27A8691C0070B08C /* ProductDetailsViewController.swift in Sources */,
 				962AE79C27A49BD3000C06B8 /* ProductsListViewModel.swift in Sources */,
 				962AE75F27A47A43000C06B8 /* SceneDelegate.swift in Sources */,
+				967661CD27AAE976006F836F /* CoreDataModel.xcdatamodeld in Sources */,
 				96F1F22327A84C0D00CD54BB /* UIViewController+Extensions.swift in Sources */,
 				96A33F5E27A99E2300E9DE80 /* Coordinator.swift in Sources */,
 				9684CB9527A8AAF7005C3506 /* ProductDetailsCoordinator.swift in Sources */,
@@ -571,6 +587,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		967661CB27AAE976006F836F /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				967661CC27AAE976006F836F /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 967661CC27AAE976006F836F /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 962AE75127A47A43000C06B8 /* Project object */;
 }

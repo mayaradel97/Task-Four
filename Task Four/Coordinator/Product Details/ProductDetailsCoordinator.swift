@@ -9,8 +9,8 @@ import UIKit
 class ProductDetailsCoordinator: Coordinator
 {
     private let navigationController: UINavigationController
-    private let product: Product
-    init(navigationController: UINavigationController,product:Product)
+    private let product: ProductViewModel
+    init(navigationController: UINavigationController,product:ProductViewModel)
     {
         self.navigationController = navigationController
         self.product = product

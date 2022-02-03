@@ -22,8 +22,10 @@ class ProductListCoordinator: Coordinator
         productListViewModel.productListCoordinator = self
         let networkLayer = NetworkLayer()
         productListViewModel.networkLayer = networkLayer
+        let coreDataHandler = CoreDataHandler()
+        productListViewModel.coreDataHandler = coreDataHandler
     }
-    func rowSelected(with product: Product)
+    func rowSelected(with product: ProductViewModel)
     {
         let productDetailsCoordinator = ProductDetailsCoordinator(navigationController: navigationController, product: product)
         productDetailsCoordinator.start()

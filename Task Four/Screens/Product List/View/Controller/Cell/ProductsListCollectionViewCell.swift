@@ -25,17 +25,16 @@ class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
         
      //   self.contentView.layer.shadowOpacity = 0.5
     }
-    func configure(product: Product)
+    func configure(product: ProductViewModel)
     {
         
         productDescription.sizeToFit()
         productImage.frame.size.height = CGFloat(product.image.height)
         productPrice.text = String (product.price) + "$"
         productDescription.text = product.productDescription
-        if let imageData = product.imageData
-        {
+      let imageData = product.imageData
             productImage.image = UIImage(data: imageData)
-        }
+      
      
         
     }
