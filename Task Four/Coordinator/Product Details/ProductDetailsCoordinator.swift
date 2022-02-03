@@ -20,6 +20,6 @@ class ProductDetailsCoordinator: Coordinator
         let productDetailsVC: ProductDetailsViewController = .instantiate(storyBoardName: "ProductDetailsStoryboard")
         let productDetailsVM = ProductDetailsViewModel(product: product)
         productDetailsVC.productDetailsViewModel = productDetailsVM
-      self.navigationController.pushViewController(productDetailsVC, animated: false)
+       self.navigationController.pushViewController(productDetailsVC, animated: false)
     }
 }

@@ -26,7 +26,7 @@ class ProductDetailsViewController: UIViewController {
                 guard let self = self else {return}
                 self.productDescription.text = self.productDetailsViewModel.productDescription
                let imageData = self.productDetailsViewModel.imageData
-                    self.productImage.image = UIImage(data: imageData)
+               self.productImage.image = UIImage(data: imageData)
                
             }
     }

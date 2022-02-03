@@ -69,20 +69,27 @@ class ProductsListViewModel
                 self.bindHideLoadingIndicatorToView()
                 return
             }
-            var productVM :[ProductViewModel]=[]
-            for product in productList
-            {
-                product.imageData = self.getImageData(with: product.image.url)!
-                let image = ProductImageViewModel(width: product.image.width, height: product.image.height, url: product.image.url)
-                let product = ProductViewModel(price: product.price, productDescription: product.productDescription, imageData: product.imageData!,image: image)
-                productVM.append(product)
-            }
-            self.products += productVM
-            self.coreDataHandler.addProductsToCoreData(with: self.products)
+        
+            self.products += self.convertToProductViewModel(productList)
             self.bindProductsListToView()
             self.bindHideLoadingIndicatorToView()
+            self.coreDataHandler.addProductsToCoreData(with: self.products)
+           
         }
         
+    }
+    func convertToProductViewModel(_ products: [Product])->[ProductViewModel]
+    {
+        var productViewModelArray: [ProductViewModel]=[]
+        for product in products
+        {
+            let imageData = self.getImageData(with: product.image.url)!
+            let image = ProductImageViewModel(width: product.image.width, height: product.image.height, url: product.image.url)
+            let product = ProductViewModel(price: product.price, productDescription: product.productDescription, imageData: imageData,image: image,id: product.id)
+            productViewModelArray.append(product)
+        }
+        
+        return productViewModelArray
     }
     func getImageData(with url: String)-> Data?
     {

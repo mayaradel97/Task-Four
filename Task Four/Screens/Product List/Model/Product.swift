@@ -6,12 +6,12 @@
 //
 
 import Foundation
-class Product: Codable
+struct Product: Codable
 {
     let image: productImage
     let price: Int
     let productDescription: String
-    var imageData: Data?
+    let id: Int
 }
 struct productImage: Codable
 {
@@ -19,20 +19,20 @@ struct productImage: Codable
     let height: Int
     let url: String
 }
-class ProductViewModel
+struct ProductViewModel
 {
-    var price: Int
-    var productDescription: String
-    var imageData: Data
+    let price: Int
+    let productDescription: String
+    let imageData: Data
     let image: ProductImageViewModel
-    
-    init( price: Int,productDescription: String, imageData: Data,image: ProductImageViewModel)
-    {
-        self.price = price
-        self.imageData = imageData
-        self.productDescription = productDescription
-        self.image = image
-    }
+    let id: Int
+//    init( price: Int,productDescription: String, imageData: Data,image: ProductImageViewModel)
+//    {
+//        self.price = price
+//        self.imageData = imageData
+//        self.productDescription = productDescription
+//        self.image = image
+//    }
 }
 struct ProductImageViewModel
 {

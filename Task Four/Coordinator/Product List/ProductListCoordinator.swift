@@ -15,7 +15,7 @@ class ProductListCoordinator: Coordinator
     }
     func start()
     {
-        let productListVC: ProductListViewController = .instantiate(storyBoardName: "Main")
+        let productListVC: ProductListViewController = .instantiate(storyBoardName: "ProductListStoryboard")
         navigationController.setViewControllers([productListVC], animated: false)
         let productListViewModel = ProductsListViewModel()
         productListVC.productListViewModel = productListViewModel
