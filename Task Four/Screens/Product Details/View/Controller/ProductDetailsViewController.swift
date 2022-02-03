@@ -7,10 +7,12 @@
 
 import UIKit
 
-class ProductDetailsViewController: UIViewController {
-    
+class ProductDetailsViewController: UIViewController
+{
+    /// @brief ProductDetailsViewController's outlet
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    /// @brief reference to ViewModel
     var productDetailsViewModel: ProductDetailsViewModel!
     
     override func viewDidLoad()
@@ -19,6 +21,11 @@ class ProductDetailsViewController: UIViewController {
         self.bindProductDetails()
         productDetailsViewModel.viewDidLoad()
     }
+    /**
+     *@discussion bind product details controller with ViewModel
+     so it will update the screen with product details
+     *@return void
+     */
     func bindProductDetails()
     {
         productDetailsViewModel.bindProductDetailsToView =

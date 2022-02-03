@@ -19,11 +19,13 @@ class CoreDataHandler
     {
         for product in products
         {
+            let date = Date()
             let productModel = ProductModel(context: context)
             productModel.imageData = product.imageData
             productModel.price = Int16(product.price)
             productModel.productDescription = product.productDescription
             productModel.id = Int16(product.id)
+            productModel.date = date
             let img =  ProductImageModel(context: context)
             img.width = Int16(product.image.width)
             img.height = Int16(product.image.height)
@@ -46,7 +48,7 @@ class CoreDataHandler
     func getProductsFromCoreData(completion: @escaping ([ProductViewModel])->())
     {
         let request : NSFetchRequest<ProductModel> = ProductModel.fetchRequest()
-        let sort = NSSortDescriptor(key: "id", ascending: true)
+        let sort = NSSortDescriptor(key: "date", ascending: true)
         request.sortDescriptors = [sort]
         do
         {
