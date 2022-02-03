@@ -17,8 +17,7 @@ class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
     override func awakeFromNib()
     {
         super.awakeFromNib()
-
-        // Initialization code
+        // configure cell ui
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 2
         self.layer.shadowOffset = CGSize.zero

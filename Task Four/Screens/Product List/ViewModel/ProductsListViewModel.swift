@@ -31,13 +31,11 @@ class ProductsListViewModel
             {
                 self.getProductListFromNetwork()
                 self.bindShowLoadingIndicatorToView()
-                print("There is internet")
             }
             else
             {
                 self.bindShowLoadingIndicatorToView()
                 self.getProductListFromCoreData()
-                print("No internet cashe data")
             }
         
         }
@@ -48,8 +46,6 @@ class ProductsListViewModel
         coreDataHandler.getProductsFromCoreData
         { products in
             self.products = products
-            print("cordata \(products.count)")
-            print("cordata \(products[0].image.height)")
             self.bindProductsListToView()
             self.bindHideLoadingIndicatorToView()
         }

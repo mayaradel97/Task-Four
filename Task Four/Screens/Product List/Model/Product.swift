@@ -26,13 +26,6 @@ struct ProductViewModel
     let imageData: Data
     let image: ProductImageViewModel
     let id: Int
-//    init( price: Int,productDescription: String, imageData: Data,image: ProductImageViewModel)
-//    {
-//        self.price = price
-//        self.imageData = imageData
-//        self.productDescription = productDescription
-//        self.image = image
-//    }
 }
 struct ProductImageViewModel
 {

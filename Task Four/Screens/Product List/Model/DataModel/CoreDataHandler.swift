@@ -13,7 +13,6 @@ class CoreDataHandler
     {
         removeProductFromCoreData()
         self.convertToCoreDataModel(products)
-        print(products[0].image)
         self.saveProducts()
     }
     func convertToCoreDataModel(_ products: [ProductViewModel])
@@ -38,7 +37,6 @@ class CoreDataHandler
         {
 
         try context.save()
-        print("save to core Data")
         }
         catch
         {
@@ -61,7 +59,6 @@ class CoreDataHandler
             productsVM.append(productVM)
             
         }
-        print("fetched")
         completion(productsVM)
         }
         catch
@@ -77,7 +74,6 @@ class CoreDataHandler
         {
             try context.execute(deleteAllProducts)
             self.saveProducts()
-            print("removed")
         }
         catch
         {
