@@ -5,9 +5,9 @@ althought the ViewModel bind the data to the view which avoiding tight coupling 
 
 
 - Design Patterns used: <br />
-   coordinator -> to control the flow of the app and avoid putting navigation logic directly into controllers.
+   coordinator -> to control the flow of the app and avoid putting navigation logic directly into controllers. <br />
    Delegate ->  for the call back for passing values or methods from one call to another class. <br />
-   Decorator -> to extend or alter the functionality of objects at runtime by wrapping them in an object <br />
+   Decorator -> to extend or alter the functionality of objects at runtime by wrapping them in an object 
 
  
 
