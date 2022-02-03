@@ -61,7 +61,6 @@
             </constraints>
             <size key="customSize" width="252" height="305"/>
             <connections>
-                <outlet property="backgoroundView" destination="tKm-aT-Jat" id="ZlL-dL-TOx"/>
                 <outlet property="productDescription" destination="CGs-SJ-NTa" id="NVS-MO-9Vu"/>
                 <outlet property="productImage" destination="vSo-98-vY9" id="uR7-3Y-ysf"/>
                 <outlet property="productPrice" destination="Nds-tG-yze" id="hRT-DU-WvJ"/>

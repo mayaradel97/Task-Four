@@ -99,13 +99,14 @@ extension ProductListViewController :UICollectionViewDataSource
     {
         let productsListCell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductsListCollectionViewCell.self), for: indexPath) as! ProductsListCollectionViewCell
         productListViewModel.configureCell(cell: productsListCell, indexPath: indexPath)
+        
         return productsListCell
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         if indexPath.row == productListViewModel.products.count - 1
         {
-            self.productListViewModel.checkNetworkConnectivity()
+            self.productListViewModel.getProductListFromNetwork()
         }
     }
     

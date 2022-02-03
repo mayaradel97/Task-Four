@@ -12,6 +12,12 @@ class CoreDataHandler
     func addProductsToCoreData(with products: [ProductViewModel])
     {
         removeProductFromCoreData()
+        self.convertToCoreDataModel(products)
+        print(products[0].image)
+        self.saveProducts()
+    }
+    func convertToCoreDataModel(_ products: [ProductViewModel])
+    {
         for product in products
         {
             let date = Date()
@@ -26,8 +32,6 @@ class CoreDataHandler
             img.url = product.image.url
             productModel.productImage = img
         }
-        print(products[0].image)
-        self.saveProducts()
     }
     func saveProducts()
     {
@@ -66,6 +70,7 @@ class CoreDataHandler
             print("Error loading categories \(error)")
         }
     }
+ 
     func removeProductFromCoreData()
     {
         let deleteAllProducts = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "ProductModel"))

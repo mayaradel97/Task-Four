@@ -9,9 +9,6 @@ import UIKit
 
 class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
 {
-    
-    
-    @IBOutlet weak var backgoroundView: UIView!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -20,11 +17,16 @@ class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
     override func awakeFromNib()
     {
         super.awakeFromNib()
+
         // Initialization code
-      //  backgoroundView.clipsToBounds = true
-        
-     //   self.contentView.layer.shadowOpacity = 0.5
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 2
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.5
+        self.clipsToBounds = false
     }
+    
+    
     func configure(product: ProductViewModel)
     {
         
@@ -32,10 +34,8 @@ class ProductsListCollectionViewCell: UICollectionViewCell,ProductListCellView
         productImage.frame.size.height = CGFloat(product.image.height)
         productPrice.text = String (product.price) + "$"
         productDescription.text = product.productDescription
-      let imageData = product.imageData
-            productImage.image = UIImage(data: imageData)
-      
-     
+        let imageData = product.imageData
+        productImage.image = UIImage(data: imageData)
         
     }
     
